@@ -1,14 +1,26 @@
 from django.shortcuts import render
 from .forms import ContatoForm
 from django.contrib import messages
+from app.models import Aluno
 
 # Create your views here.
 
 def home(request):
-    return render(request, 'usuarios/index.html', {})
+    alunos = Aluno.objects.all()
+    key = {
+        'alunos' : alunos
+    }
+    return render(request, 'usuarios/index.html', key)
 
 def w3c(request):
     return render(request, 'usuarios/w3c.html')
+
+def aluno(request, id):
+    aluno = Aluno.objects.get(id=id)
+    context = {
+        'aluno' : aluno
+    }
+    return render(request, 'usuarios/aluno.html', context)
 
 def html(request):
     return render(request, 'usuarios/html.html')

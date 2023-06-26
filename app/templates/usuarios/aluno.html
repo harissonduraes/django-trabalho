@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <div class="jumbotron">
+    <p>
+        <h1>Aluno</h1></br>
+        <table class="table">
+        <thead>
+        <tr>
+        <th>Nome</th>
+        <th>Período</th>
+        <th>Nota</th>
+        <th>Situação</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+        <td>{{ aluno.nome }}</td>
+        <td>{{ aluno.periodo }}</td>
+        <td>{{ aluno.nota }}</td>
+        <td>{% if aluno.situacao %}
+            Aprovado
+            {% else %}
+            Reprovado
+            {% endif %}
+        </td>
+        </tr>
+        </tbody>
+        </table>
+  </div>
+{% endblock %}
+
+
